@@ -2,7 +2,7 @@
 
 Yleisiä linkkejä:
 
-* [Linkki sovellukseeni](http://leevihei.users.cs.helsinki.fi/tsoha/esittelysivu.html)
+* [Linkki sovellukseeni](http://leevihei.users.cs.helsinki.fi/muistilista/)
 * [Linkki dokumentaatiooni](https://github.com/SovietLada/Tietokantaprojekti/blob/master/doc/dokumentaatio.pdf)
 
 ## Työn aihe
