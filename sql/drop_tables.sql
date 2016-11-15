@@ -1,1 +1,7 @@
 -- Lisää DROP TABLE lauseet tähän tiedostoon
+
+DROP TABLE IF EXISTS Memo CASCADE;
+
+DROP TABLE IF EXISTS Category CASCADE;
+
+DROP TABLE IF EXISTS Joint CASCADE;
