@@ -26,17 +26,10 @@
             <td>{{memo.title}}</td>
             <td>{{memo.content}}</td>
             <td>{{memo.priority}}</td>
+            <td><a class="btn btn-default btn-sm" href="{{base_path}}/{{memo.id}}">Muokkaa</a></td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-
-<a href="{{base_path}}memos">
-    <h2>Selaa muistioita</h2>
-</a> 
-
-<a href="{{base_path}}categories">
-    <h2>Selaa kategorioita</h2>
-</a> 
 
 {% endblock %}

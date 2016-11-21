@@ -1,27 +1,21 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 {% extends "base.html" %}
 {% block content %}
-  <h1>Kirjaudu sisään</h1>
+<h1>Kirjaudu sisään</h1>
 
-  <!-- Kaikki lomakkeen elementit form-tagin sisään -->
-  <form>
+<!-- Kaikki lomakkeen elementit form-tagin sisään -->
+<form>
     <!-- Tekstikenttä käyttäjätunnukselle -->
     <div class="form-group">
-      <label>Käyttäjätunnus</label>
-      <input class="form-control" type="text">
+        <label>Käyttäjätunnus</label>
+        <input class="form-control" type="text">
     </div>
 
     <!-- Salasanakenttä salasanalle -->
     <div class="form-group">
-      <label>Salasana</label>
-      <input class="form-control" type="password">
+        <label>Salasana</label>
+        <input class="form-control" type="password">
     </div>
 
     <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>
-  </form>
+</form>
 {% endblock %}

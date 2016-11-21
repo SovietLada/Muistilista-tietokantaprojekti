@@ -41,14 +41,14 @@ class Memo extends BaseModel {
         $row = $query->fetch();
 
         if ($row) {
-            $memos[] = new Memo(array(
+            $memo = new Memo(array(
                 'id' => $row['id'],
                 'title' => $row['title'],
                 'content' => $row['content'],
                 'priority' => $row['priority'],
             ));
-
-            return $memos;
+            
+            return $memo;
         }
 
         return NULL;
