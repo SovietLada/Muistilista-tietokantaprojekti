@@ -5,14 +5,38 @@
     <h1>Muistilista</h1>
 </div>
 
-<a href="./categories">
-    <h2>Selaa kategorioita</h2>
-</a> 
+<p>
+    <a href="{{base_path}}/new" class="btn btn-success">Lisää muistio</a>
+</p>
 
-<a href="./memos">
+<table class="table table-striped table-bordered">
+    <thead>
+    <thead>
+        <tr>
+            <th>Otsikko</th>
+            <th>Sisältö</th>
+            <th>Prioriteetti</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for memo in memos %}
+        <tr>
+            <td>{{memo.title}}</td>
+            <td>{{memo.content}}</td>
+            <td>{{memo.priority}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{base_path}}memos">
     <h2>Selaa muistioita</h2>
 </a> 
 
-
+<a href="{{base_path}}categories">
+    <h2>Selaa kategorioita</h2>
+</a> 
 
 {% endblock %}
