@@ -40,13 +40,13 @@ class MemoController extends BaseController {
         ));
 
         $memo->save();
-        Redirect::to('/', array('message' => 'Uusi muistio lisätty'));
+        Redirect::to('/');
     }
 
     public static function edit($id) {
 
         $memo = Memo::find($id);
-        View::make('memo_edit.html')->with($memo);
+        View::make('memo_edit.html', array('attributes' => $memo));
     }
 
 }

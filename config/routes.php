@@ -26,7 +26,6 @@ $routes->get('/new', function() {
 });
 
 $routes->get('/:id', function($id) {
-    
+
     MemoController::edit($id);
 });
-
