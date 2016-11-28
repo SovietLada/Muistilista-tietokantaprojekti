@@ -53,5 +53,26 @@ class MemoController extends BaseController {
         $memo = Memo::find($id);
         View::make('memo_edit.html', array('attributes' => $memo));
     }
+    
+    public static function update() {
+        
+        $params = $_POST; // post params from edit view
+        $memo = Memo::find($params['id']);
 
+        // TODO: validation
+        
+        $memo->title = $params['title'];
+        $memo->content = $params['content'];
+        $memo->priority = $params['priority'];
+        $memo->update();
+        Redirect::to('/', array('success' => 'Muokkaus onnistui'));
+    }
+    
+    public static function delete($id) {
+        
+        $memo = Memo::find($id);
+        $memo->delete();
+        
+        Redirect::to('/', array('success' => 'Poisto onnistui'));
+    }
 }

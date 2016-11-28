@@ -29,3 +29,13 @@ $routes->get('/:id', function($id) {
 
     MemoController::edit($id);
 });
+
+$routes->post('/:id', function() {
+   
+    MemoController::update();
+});
+
+$routes->get('/delete/:id', function($id) {
+
+    MemoController::delete($id);
+});

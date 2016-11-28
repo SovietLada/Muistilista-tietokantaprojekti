@@ -61,6 +61,20 @@ class Memo extends BaseModel {
         $row = $query->fetch();
     }
     
+    public function update() {
+        
+        $query = DB::connection()->prepare('UPDATE Memo SET title = :title, content = :content, priority = :priority WHERE id = :id');
+        $query->execute(array('title' => $this->title, 'content' => $this->content, 'priority' => $this->priority, 'id' => $this->id));
+        $row = $query->fetch();
+    }
+    
+    public function delete() {
+        
+        $query = DB::connection()->prepare('DELETE FROM Memo WHERE id = :id');
+        $query->execute(array('id' => $this->id));
+        $row = $query->fetch();
+    }
+    
     // Check all three params and their respective conditions
     public function validateParams() {
         
