@@ -47,7 +47,7 @@ class Memo extends BaseModel {
                 'content' => $row['content'],
                 'priority' => $row['priority'],
             ));
-            
+
             return $memo;
         }
 
@@ -60,5 +60,32 @@ class Memo extends BaseModel {
         $query->execute(array('title' => $this->title, 'content' => $this->content, 'priority' => $this->priority));
         $row = $query->fetch();
     }
-
+    
+    // Check all three params and their respective conditions
+    public function validateParams() {
+        
+        $errors = array();
+        
+        $v1 = new Valitron\Validator(array('title' => $this->title));
+        $v1->rule('required', 'title');
+        if (!$v1->validate()) {
+            $errors[] = 'Määrittele otsikko';
+        }
+        
+        $v2 = new Valitron\Validator(array('content' => $this->content));
+        $v2->rule('required', 'content');
+        if (!$v2->validate()) {
+            $errors[] = 'Määrittele sisältö';
+        }
+        
+        $v3 = new Valitron\Validator(array('priority' => $this->priority));
+        $v3->rule('numeric', 'priority');
+        $v3->rule('required', 'priority');
+        if (!$v3->validate()) {
+            $errors[] = 'Prioriteetin tulee olla numeerinen arvo';
+        }
+        
+        return $errors;
+    }
+    
 }

@@ -5,6 +5,21 @@
     <h1>Muistilista</h1>
 </div>
 
+{% if errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for error in errors %}
+        <li>{{error}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+{% if success %}
+<div class="alert alert-success">
+    {{success}}
+</div>
+{% endif %}
+
 <p>
     <a href="{{base_path}}/new" class="btn btn-success">Lisää muistio</a>
 </p>

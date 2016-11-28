@@ -39,8 +39,13 @@ class MemoController extends BaseController {
             'priority' => $params['priority']
         ));
 
+        $errors = $memo->validateParams();
+        if (count($errors) > 0) {
+            Redirect::to('/', array('errors' => $errors));
+        }
+
         $memo->save();
-        Redirect::to('/');
+        Redirect::to('/', array('success' => 'Lisäys onnistui'));
     }
 
     public static function edit($id) {
