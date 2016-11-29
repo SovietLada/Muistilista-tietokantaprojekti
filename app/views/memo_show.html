@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if success %}
+<div class="alert alert-success">
+    {{success}}
+</div>
+{% endif %}
+
+<div class="page-header">
+    <h1>Muistio: {{attributes.title}}</h1>
+</div>
+<h2>{{attributes.content}}</h2>
+
+<p>Prioriteetti: {{attributes.priority}}</p>
+
+<td><a class="btn btn-default" href="{{base_path}}/">Poistu tarkastelunäkymästä</a></td>
+
+
+{% endblock %}

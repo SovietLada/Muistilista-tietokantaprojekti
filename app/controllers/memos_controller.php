@@ -65,14 +65,19 @@ class MemoController extends BaseController {
         $memo->content = $params['content'];
         $memo->priority = $params['priority'];
         $memo->update();
-        Redirect::to('/', array('success' => 'Muokkaus onnistui'));
+        Redirect::to('/show/' . $memo->id, array('success' => 'Muokkaus onnistui'));
     }
     
     public static function delete($id) {
         
         $memo = Memo::find($id);
         $memo->delete();
-        
         Redirect::to('/', array('success' => 'Poisto onnistui'));
+    }
+    
+    public static function show($id) {
+        
+        $memo = Memo::find($id);
+        View::make('memo_show.html', array('attributes' => $memo));
     }
 }

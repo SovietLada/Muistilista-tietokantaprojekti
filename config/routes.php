@@ -39,3 +39,8 @@ $routes->get('/delete/:id', function($id) {
 
     MemoController::delete($id);
 });
+
+$routes->get('/show/:id', function($id) {
+   
+    MemoController::show($id);
+});
