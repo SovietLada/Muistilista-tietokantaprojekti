@@ -11,15 +11,15 @@ class User extends BaseModel {
     
         public static function find($id) {
 
-        $query = DB::connection()->prepare('SELECT * FROM UserAccount WHERE id = :id LIMIT 1'); // TODO: add table in db
+        $query = DB::connection()->prepare('SELECT * FROM UserAccount WHERE id = :id LIMIT 1');
         $query->execute(array('id' => $id));
         $row = $query->fetch();
 
         if ($row) {
             $user = new User(array(
                 'id' => $row['id'],
-                'username' => $row['title'],
-                'password' => $row['content'],
+                'username' => $row['username'],
+                'password' => $row['password'],
             ));
 
             return $user;
