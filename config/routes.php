@@ -44,3 +44,12 @@ $routes->get('/show/:id', function($id) {
    
     MemoController::show($id);
 });
+
+$routes->get('/login', function(){
+
+    UserController::login();
+});
+$routes->post('/login', function(){
+
+    UserController::handle_login();
+});

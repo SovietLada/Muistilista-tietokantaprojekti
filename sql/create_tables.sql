@@ -17,3 +17,9 @@ CREATE TABLE Joint (
     memo_id INTEGER REFERENCES Memo(id),
     category_id INTEGER REFERENCES Category(id)
 );
+
+CREATE TABLE UserAccount (
+    id SERIAL PRIMARY KEY,
+    username varchar(64) NOT NULL,
+    password varchar(64) NOT NULL
+);
