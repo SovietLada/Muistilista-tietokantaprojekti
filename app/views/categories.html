@@ -5,5 +5,22 @@
     <h1>Kategoriat</h1>
 </div>
 
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Nimi</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        {% for category in categories %}
+        <tr>
+            <td>{{category.title}}</td>
+            <td><a class="btn btn-default" href="{{base_path}}/show/{{category.id}}">Tarkastele</a></td> <!-- TODO: fix view -->
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 {% endblock %}
 

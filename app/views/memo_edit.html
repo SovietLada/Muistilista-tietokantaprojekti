@@ -2,32 +2,25 @@
 {% block content %}
 <h1>Muokkaa muistiota</h1>
 
-<form method="post" action="{{base_path}}/edit/{{attributes.id}}">
+<form method="post" action="{{base_path}}/edit/{{attributes.id}}"> <!-- TODO: check why fields show only part of the attributes -->
 
     <div class="form-group">
-
-        <!-- ID field -->
         <input class="form-control" name="id" value={{attributes.id}} type="hidden">
     </div>
-
-    <div
+    <div class="form-group">
         <label>Otsikko</label>
         <input class="form-control" name="title" value={{attributes.title}} type="text">
     </div>
-
     <div class="form-group">
         <label>Sisältö</label>
         <input class="form-control" name="content" value={{attributes.content}} type="text">
     </div>
-
     <div class="form-group">
         <label>Prioriteetti</label>
         <input class="form-control" name="priority" value={{attributes.priority}} type="text">
     </div>
-
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Tallenna</button>
     </div>
 </form>
-
 {% endblock %}
