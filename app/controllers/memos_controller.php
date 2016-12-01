@@ -1,11 +1,6 @@
 <?php
 
 class MemoController extends BaseController {
-
-    public static function sandbox() {
-
-        View::make('helloworld.html');
-    }
     
     public static function index() {
 

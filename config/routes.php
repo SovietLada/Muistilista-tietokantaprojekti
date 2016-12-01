@@ -1,16 +1,15 @@
 <?php
 
-$routes->get('/hiekkalaatikko', function() { // sandbox
+function check_logged_in(){
+  BaseController::check_logged_in();
+}
 
-    MemoController::sandbox();
-});
-
-$routes->get('/', function() { // home page
+$routes->get('/', 'check_logged_in', function() { // home page
 
     MemoController::index();
 });
 
-$routes->get('/categories', function() { // categories page
+$routes->get('/categories', 'check_logged_in', function() { // categories page
 
     MemoController::categories();
 });
@@ -52,4 +51,9 @@ $routes->get('/login', function() { // login page
 $routes->post('/login', function() { // log user in
 
     UserController::handle_login();
+});
+
+$routes->post('/logout', function() { // log user out
+  
+    UserController::logout();
 });

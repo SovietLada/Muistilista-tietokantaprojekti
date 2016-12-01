@@ -2,10 +2,11 @@
 
 {% block content %}
 <div class="page-header">
+    {% if user_logged_in %}
+    <h1>Käyttäjän {{user_logged_in.username}} muistilista</h1>
+    {% else %}
     <h1>Muistilista</h1>
-</div>
-<div class="page-header">
-    <a class="btn btn-default" href="{{base_path}}/login">Kirjaudu sisään</a> <!-- KORJAA REITIT TÄMÄ VIE EDIT-NÄKYMÄÄN HELVETTI -->
+    {% endif %}
 </div>
 
 {% if errors %}
@@ -20,6 +21,11 @@
 {% if success %}
 <div class="alert alert-success">
     {{success}}
+</div>
+{% endif %}
+{% if message %}
+<div class="alert alert-success">
+    {{message}}
 </div>
 {% endif %}
 
