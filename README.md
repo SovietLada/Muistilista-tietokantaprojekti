@@ -11,5 +11,5 @@ Yleisiä linkkejä:
 
 ## Käyttäjätunnukset testailuun
 
-* Linus, 1234
-* Turing 4321
+* Linus:1234
+* Turing:4321
