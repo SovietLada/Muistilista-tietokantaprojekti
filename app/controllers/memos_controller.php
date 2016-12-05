@@ -16,7 +16,7 @@ class MemoController extends BaseController {
 
     public static function create() {
 
-        View::make('new.html');
+        View::make('memo_new.html');
     }
 
     public static function store() {
@@ -48,12 +48,15 @@ class MemoController extends BaseController {
         
         $params = $_POST; // post params from edit view
         $memo = Memo::find($params['id']);
-
-        // TODO: validation
-        
         $memo->title = $params['title'];
         $memo->content = $params['content'];
         $memo->priority = $params['priority'];
+        
+        $errors = $memo->validateParams();
+        if (count($errors) > 0) {
+            Redirect::to('/edit/' . $params['id'], array('errors' => $errors));
+        }
+        
         $memo->update();
         Redirect::to('/show/' . $memo->id, array('success' => 'Muokkaus onnistui'));
     }
