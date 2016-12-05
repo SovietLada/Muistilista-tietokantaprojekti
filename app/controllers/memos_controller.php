@@ -31,8 +31,7 @@ class MemoController extends BaseController {
 
         $errors = $memo->validateParams();
         if (count($errors) > 0) {
-            View::make('memo_new.html', array('errors' => $errors));
-            // View::make('memo_new.html', array('attributes' => $memo));
+            View::make('memo_new.html', array('errors' => $errors, 'attributes' => $memo)); // send two arrays to view
         }
 
         $memo->save();

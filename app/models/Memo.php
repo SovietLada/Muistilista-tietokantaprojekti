@@ -82,12 +82,14 @@ class Memo extends BaseModel {
         $v1->rule('required', 'title');
         if (!$v1->validate()) {
             $errors[] = 'Määrittele otsikko';
+            $this->title = 'Otsikko';
         }
 
         $v2 = new Valitron\Validator(array('content' => $this->content));
         $v2->rule('required', 'content');
         if (!$v2->validate()) {
             $errors[] = 'Määrittele sisältö';
+            $this->content = 'Sisältö';
         }
 
         $v3 = new Valitron\Validator(array('priority' => $this->priority));
@@ -95,6 +97,7 @@ class Memo extends BaseModel {
         $v3->rule('required', 'priority');
         if (!$v3->validate()) {
             $errors[] = 'Prioriteetin tulee olla numeerinen arvo';
+            $this->priority = 0;
         }
 
         return $errors;
