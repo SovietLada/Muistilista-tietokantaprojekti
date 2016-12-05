@@ -29,6 +29,15 @@
         <input name="priority" class="form-control" value={{attributes.priority}} type="text">
     </div>
 
+    {% for category in categories %}
+    <div class="checkbox">
+        <label>
+            <input type="checkbox">
+            {{category.title}}
+        </label>
+    </div>
+    {% endfor %}
+
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Lisää</button>
     </div>
@@ -49,6 +58,15 @@
         <label>Prioriteetti</label>
         <input name="priority" class="form-control" type="text">
     </div>
+
+    {% for category in categories %}
+    <div class="checkbox">
+        <label>
+            <input type="checkbox">
+            {{category.title}}
+        </label>
+    </div>
+    {% endfor %}
 
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Lisää</button>

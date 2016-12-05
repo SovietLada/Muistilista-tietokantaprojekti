@@ -34,7 +34,18 @@ class Category extends BaseModel {
 
     public static function find($id) {
 
-        // TODO: implementation
+        $query = DB::connection()->prepare('SELECT * FROM Category WHERE id = :id LIMIT 1');
+        $query->execute(array('id' => $id));
+        $row = $query->fetch();
+
+        if ($row) {
+            $category = new Category(array(
+                'id' => $row['id'],
+                'title' => $row['title'],
+            ));
+            return $category;
+        }
+        return NULL;
     }
 
 }

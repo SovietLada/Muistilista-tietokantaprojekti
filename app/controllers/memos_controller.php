@@ -16,7 +16,8 @@ class MemoController extends BaseController {
 
     public static function create() {
         
-        View::make('memo_new.html');
+        $categories = Category::all();
+        View::make('memo_new.html', array('categories' => $categories));
     }
 
     public static function store() {
@@ -31,7 +32,8 @@ class MemoController extends BaseController {
 
         $errors = $memo->validateParams();
         if (count($errors) > 0) {
-            View::make('memo_new.html', array('errors' => $errors, 'attributes' => $memo)); // send two arrays to view
+            $categories = Category::all();
+            View::make('memo_new.html', array('errors' => $errors, 'attributes' => $memo, 'categories' => $categories)); // send multiple arrays to view
         }
 
         $memo->save();
@@ -41,7 +43,8 @@ class MemoController extends BaseController {
     public static function edit($id) {
 
         $memo = Memo::find($id);
-        View::make('memo_edit.html', array('attributes' => $memo));
+        $categories = Category::all();
+        View::make('memo_edit.html', array('attributes' => $memo, 'categories' => $categories));
     }
 
     public static function update() {
@@ -54,7 +57,8 @@ class MemoController extends BaseController {
 
         $errors = $memo->validateParams();
         if (count($errors) > 0) {
-            Redirect::to('/edit/' . $params['id'], array('errors' => $errors));
+            $categories = Category::all();
+            Redirect::to('/edit/' . $params['id'], array('errors' => $errors, 'categories' => $categories));
         }
 
         $memo->update();
