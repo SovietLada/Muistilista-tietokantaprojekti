@@ -2,6 +2,38 @@
 {% block content %}
 <h1>Lisää muistio</h1>
 
+{% if errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for error in errors %}
+        <li>{{error}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+{% if attributes %}
+<form method="post" action="{{base_path}}/">
+    <div class="form-group">
+        <label>Otsikko</label>
+        <input name="title" class="form-control" value={{attributes.title}} type="text">
+    </div>
+
+    <div class="form-group">
+        <label>Sisältö</label>
+        <input name="content" class="form-control" value={{attributes.content}} type="text">
+    </div>
+
+    <div class="form-group">
+        <label>Prioriteetti</label>
+        <input name="priority" class="form-control" value={{attributes.priority}} type="text">
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Lisää</button>
+    </div>
+</form>
+{% else %}
 <form method="post" action="{{base_path}}/">
     <div class="form-group">
         <label>Otsikko</label>
@@ -22,4 +54,5 @@
         <button type="submit" class="btn btn-primary">Lisää</button>
     </div>
 </form>
+{% endif %}
 {% endblock %}
