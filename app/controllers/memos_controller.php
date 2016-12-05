@@ -36,8 +36,102 @@ class MemoController extends BaseController {
             View::make('memo_new.html', array('errors' => $errors, 'attributes' => $memo, 'categories' => $categories)); // send multiple arrays to view
         }
 
-        $memo->save();
+        $newParams = $memo->save(); // save memo and get db entry with id
+        
+        $memoWithID = new Memo(array(
+            'id' => $newParams['id'],
+            'title' => $params['title'],
+            'content' => $params['content'],
+            'priority' => $params['priority']
+        ));
+                        
+        MemoController::setCategories($params, $memoWithID);
+        
         Redirect::to('/', array('success' => 'Lisäys onnistui'));
+    }
+    
+    public static function setCategories(array $params, $memo) {
+        
+        if (strcmp($params['CS'], 'on') == 0) {
+            
+            $category = Category::findByTitle('CS');
+            $joint = new Joint(array(
+                'memo_id' => $memo->id,
+                'category_id' => $category->id
+            ));
+                        
+            $joint->save();
+        }
+        if (strcmp($params['Kiireelliset'], 'on') == 0) {
+            
+            $category = Category::findByTitle('Kiireelliset');
+            $joint = new Joint(array(
+                'memo_id' => $memo->id,
+                'category_id' => $category->id
+            ));
+                        
+            $joint->save();
+        }
+        if (strcmp($params['Ei-kiireelliset'], 'on') == 0) {
+            
+            $category = Category::findByTitle('Ei-kiireelliset');
+            $joint = new Joint(array(
+                'memo_id' => $memo->id,
+                'category_id' => $category->id
+            ));
+                        
+            $joint->save();
+        }
+        if (strcmp($params['Sekalaiset'], 'on') == 0) {
+            
+            $category = Category::findByTitle('Sekalaiset');
+            $joint = new Joint(array(
+                'memo_id' => $memo->id,
+                'category_id' => $category->id
+            ));
+                        
+            $joint->save();
+        }
+        if (strcmp($params['Jonninjoutavat'], 'on') == 0) {
+            
+            $category = Category::findByTitle('Jonninjoutavat');
+            $joint = new Joint(array(
+                'memo_id' => $memo->id,
+                'category_id' => $category->id
+            ));
+                        
+            $joint->save();
+        }
+        if (strcmp($params['Tärkeät'], 'on') == 0) {
+            
+            $category = Category::findByTitle('Tärkeät');
+            $joint = new Joint(array(
+                'memo_id' => $memo->id,
+                'category_id' => $category->id
+            ));
+                        
+            $joint->save();
+        }
+        if (strcmp($params['Tietokantasovelluksen'], 'on') == 0) {
+            
+            $category = Category::findByTitle('Tietokantasovelluksen TODO-lista');
+            $joint = new Joint(array(
+                'memo_id' => $memo->id,
+                'category_id' => $category->id
+            ));
+                        
+            $joint->save();
+        }
+        if (strcmp($params['Kissat'], 'on') == 0) {
+            
+            $category = Category::findByTitle('Kissat');
+            $joint = new Joint(array(
+                'memo_id' => $memo->id,
+                'category_id' => $category->id
+            ));
+                        
+            $joint->save();
+        }
     }
 
     public static function edit($id) {

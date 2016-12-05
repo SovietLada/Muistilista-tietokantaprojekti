@@ -57,6 +57,8 @@ class Memo extends BaseModel {
         $query = DB::connection()->prepare('INSERT INTO Memo (title, content, priority) VALUES (:title, :content, :priority) RETURNING id');
         $query->execute(array('title' => $this->title, 'content' => $this->content, 'priority' => $this->priority));
         $row = $query->fetch();
+        
+        return $row;
     }
 
     public function update() {

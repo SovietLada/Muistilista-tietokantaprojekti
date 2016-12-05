@@ -47,5 +47,21 @@ class Category extends BaseModel {
         }
         return NULL;
     }
+    
+    public static function findByTitle($title) {
+
+        $query = DB::connection()->prepare('SELECT * FROM Category WHERE title = :title LIMIT 1');
+        $query->execute(array('title' => $title));
+        $row = $query->fetch();
+
+        if ($row) {
+            $category = new Category(array(
+                'id' => $row['id'],
+                'title' => $row['title'],
+            ));
+            return $category;
+        }
+        return NULL;
+    }
 
 }
