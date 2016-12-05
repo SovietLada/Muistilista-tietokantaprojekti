@@ -57,3 +57,8 @@ $routes->post('/logout', function() { // log user out
   
     UserController::logout();
 });
+
+$routes->get('/view_categories/:id', function($id) { // show category page
+
+    CategoryController::show($id);
+});

@@ -3,7 +3,7 @@
 class Memo extends BaseModel {
 
     // atrributes
-    public $id, $title, $content, $priority;
+    public $id, $title, $content, $priority, $user_id;
 
     // constructor
     public function __construct($attributes) {
@@ -11,12 +11,12 @@ class Memo extends BaseModel {
         parent::__construct($attributes);
     }
 
-    public static function all() {
+    public static function allFromUser($user) {
 
         // init query
-        $query = DB::connection()->prepare('SELECT * FROM Memo');
+        $query = DB::connection()->prepare('SELECT * FROM Memo WHERE user_id = :uid');
         // execute query
-        $query->execute();
+        $query->execute(array('uid' => $user->id));
         // fetch results
         $rows = $query->fetchAll();
         $memos = array();
@@ -28,6 +28,7 @@ class Memo extends BaseModel {
                 'title' => $row['title'],
                 'content' => $row['content'],
                 'priority' => $row['priority'],
+                'user_id' => $row['user_id']
             ));
         }
 
@@ -46,25 +47,49 @@ class Memo extends BaseModel {
                 'title' => $row['title'],
                 'content' => $row['content'],
                 'priority' => $row['priority'],
+                'user_id' => $row['user_id']
             ));
             return $memo;
         }
         return NULL;
     }
 
+    public static function findMemosByCategory($id, $uid) {
+
+        $query = DB::connection()->prepare('SELECT m.* FROM Joint j, Memo m WHERE j.category_id = :category_id AND m.id = j.memo_id AND m.user_id = :uid');
+        $query->execute(array('category_id' => $id, 'uid' => $uid));
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        $memos = array();
+
+        foreach ($result as $row) {
+
+            $memo = new Memo(array(
+                'id' => $row['id'],
+                'title' => $row['title'],
+                'content' => $row['content'],
+                'priority' => $row['priority'],
+                'user_id' => $row['user_id']
+            ));
+            $memos[] = $memo;
+        }
+
+        return $memos;
+    }
+
     public function save() {
 
-        $query = DB::connection()->prepare('INSERT INTO Memo (title, content, priority) VALUES (:title, :content, :priority) RETURNING id');
-        $query->execute(array('title' => $this->title, 'content' => $this->content, 'priority' => $this->priority));
+        $query = DB::connection()->prepare('INSERT INTO Memo (title, content, priority, user_id) VALUES (:title, :content, :priority, :user_id) RETURNING id');
+        $query->execute(array('title' => $this->title, 'content' => $this->content, 'priority' => $this->priority, 'user_id' => $this->user_id));
         $row = $query->fetch();
-        
+
         return $row;
     }
 
     public function update() {
 
-        $query = DB::connection()->prepare('UPDATE Memo SET title = :title, content = :content, priority = :priority WHERE id = :id');
-        $query->execute(array('title' => $this->title, 'content' => $this->content, 'priority' => $this->priority, 'id' => $this->id));
+        $query = DB::connection()->prepare('UPDATE Memo SET title = :title, content = :content, priority = :priority, user_id = :user_id WHERE id = :id');
+        $query->execute(array('title' => $this->title, 'content' => $this->content, 'priority' => $this->priority, 'user_id' => $this->user_id, 'id' => $this->id));
         $row = $query->fetch();
     }
 
@@ -77,7 +102,6 @@ class Memo extends BaseModel {
 
     // Check all three params and their respective conditions
     public function validateParams() { // TODO: Check input length
-
         $errors = array();
 
         $v1 = new Valitron\Validator(array('title' => $this->title));

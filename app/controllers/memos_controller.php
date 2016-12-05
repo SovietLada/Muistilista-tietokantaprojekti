@@ -4,7 +4,7 @@ class MemoController extends BaseController {
 
     public static function index() {
 
-        $memos = Memo::all(); // get memos
+        $memos = Memo::allFromUser(parent::get_user_logged_in()); // get memos
         View::make('home.html', array('memos' => $memos)); // render view
     }
 
@@ -27,7 +27,8 @@ class MemoController extends BaseController {
         $memo = new Memo(array(
             'title' => $params['title'],
             'content' => $params['content'],
-            'priority' => $params['priority']
+            'priority' => $params['priority'],
+            'user_id' => parent::get_user_logged_in()->id
         ));
 
         $errors = $memo->validateParams();

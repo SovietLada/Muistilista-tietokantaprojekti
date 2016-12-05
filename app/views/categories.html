@@ -16,7 +16,7 @@
         {% for category in categories %}
         <tr>
             <td>{{category.title}}</td>
-            <td><a class="btn btn-default" href="{{base_path}}/show/{{category.id}}">Tarkastele</a></td> <!-- TODO: fix view -->
+            <td><a class="btn btn-default" href="{{base_path}}/view_categories/{{category.id}}">Tarkastele</a></td> <!-- TODO: fix view -->
         </tr>
         {% endfor %}
     </tbody>
