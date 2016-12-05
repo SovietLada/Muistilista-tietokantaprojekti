@@ -161,6 +161,7 @@ class MemoController extends BaseController {
 
     public static function delete($id) {
 
+        Joint::deleteJointsWithMemo($id);
         $memo = Memo::find($id);
         $memo->delete();
         Redirect::to('/', array('success' => 'Poisto onnistui'));

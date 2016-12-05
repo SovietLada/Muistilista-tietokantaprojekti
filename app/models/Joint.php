@@ -52,4 +52,21 @@ class Joint extends BaseModel {
         $row = $query->fetch();
     }
 
+    public static function deleteJointsWithMemo($id) {
+
+        $query = DB::connection()->prepare('SELECT * FROM Joint WHERE memo_id = :memo_id');
+        $query->execute(array('memo_id' => $id));
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($result as $row) {
+
+            $joint = new Joint(array(
+                'id' => $row['id'],
+                'memo_id' => $id,
+                'category_id' => $row['category_id'],
+            ));
+            $joint->delete();
+        }
+    }
+
 }
