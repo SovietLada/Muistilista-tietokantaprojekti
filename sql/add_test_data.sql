@@ -22,6 +22,7 @@ INSERT INTO UserAccount (username, password) VALUES ('Linus', '1234');
 
 INSERT INTO UserAccount (username, password) VALUES ('Turing', '4321');
 
+/* Linus's files */
 /* Set memos and joints to category 1 */
 
 INSERT INTO Memo (title, content, priority, user_id) VALUES (
@@ -88,3 +89,34 @@ INSERT INTO Memo (title, content, priority, user_id) VALUES (
 INSERT INTO Joint (memo_id, category_id) VALUES (7, 3);
 INSERT INTO Joint (memo_id, category_id) VALUES (7, 4);
 INSERT INTO Joint (memo_id, category_id) VALUES (7, 5);
+
+
+/* Turing's files */
+/* Set memos and joints to category 2 */
+
+INSERT INTO Memo (title, content, priority, user_id) VALUES (
+    'Syö omppuja', 
+    'Mielellään punaisia', 
+    3, 
+    2
+);
+INSERT INTO Joint (memo_id, category_id) VALUES (8, 2);
+
+INSERT INTO Memo (title, content, priority, user_id) VALUES (
+    'Harrasta ruutuhyppelyä', 
+    'Tee se', 
+    4, 
+    2
+);
+INSERT INTO Joint (memo_id, category_id) VALUES (9, 2);
+
+/* Set memos and joints to category 2 and 7 */
+
+INSERT INTO Memo (title, content, priority, user_id) VALUES (
+    'Paranna muistilistan tietoturvaa', 
+    'Kirjautumattomien käyttäjien ei tulisi päästä tarkastelemaan sovelluksen tietoja', 
+    100, 
+    2
+);
+INSERT INTO Joint (memo_id, category_id) VALUES (10, 2);
+INSERT INTO Joint (memo_id, category_id) VALUES (10, 7);
