@@ -157,6 +157,8 @@ class MemoController extends BaseController {
         }
 
         $memo->update();
+        Joint::deleteJointsWithMemo($memo->id);
+        self::setCategories($params, $memo);
         Redirect::to('/show/' . $memo->id, array('success' => 'Muokkaus onnistui'));
     }
 

@@ -33,7 +33,8 @@
     {% for category in categories %}
     <div class="checkbox">
         <label>
-            <input type="checkbox">
+            <input type='hidden' value='0' name={{category.title}}>
+            <input type="checkbox" name={{category.title}}>
             {{category.title}}
         </label>
     </div>
