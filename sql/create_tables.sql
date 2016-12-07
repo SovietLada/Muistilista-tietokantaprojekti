@@ -9,7 +9,7 @@ CREATE TABLE UserAccount (
 CREATE TABLE Memo (
     id SERIAL PRIMARY KEY,
     title varchar(64) NOT NULL,
-    content varchar(256) NOT NULL,
+    content varchar(128) NOT NULL,
     priority INTEGER NOT NULL,
     user_id INTEGER REFERENCES UserAccount(id)
 );
