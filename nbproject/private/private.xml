@@ -12,12 +12,7 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/ad/fshome3/u3/l/leevihei/Desktop/Muistilista-tietokantaprojekti/app/views/memo_new.html</file>
-            <file>file:/home/ad/fshome3/u3/l/leevihei/Desktop/Muistilista-tietokantaprojekti/app/views/memo_edit.html</file>
-            <file>file:/home/ad/fshome3/u3/l/leevihei/Desktop/Muistilista-tietokantaprojekti/app/controllers/memos_controller.php</file>
-            <file>file:/home/ad/fshome3/u3/l/leevihei/Desktop/Muistilista-tietokantaprojekti/app/models/Memo.php</file>
-            <file>file:/home/ad/fshome3/u3/l/leevihei/Desktop/Muistilista-tietokantaprojekti/app/models/Joint.php</file>
-            <file>file:/home/ad/fshome3/u3/l/leevihei/Desktop/Muistilista-tietokantaprojekti/config/routes.php</file>
+            <file>file:/home/ad/fshome3/u3/l/leevihei/Desktop/Muistilista-tietokantaprojekti/sql/create_tables.sql</file>
         </group>
     </open-files>
 </project-private>
