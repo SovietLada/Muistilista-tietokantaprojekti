@@ -43,6 +43,12 @@ class UserController extends BaseController {
         View::make('user_new.html');
     }
     
+    public static function store() {
+        
+        
+    }
+
+
     public static function show($id) {
         
         View::make('user_show.html');

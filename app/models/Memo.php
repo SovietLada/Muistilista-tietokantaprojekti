@@ -101,7 +101,7 @@ class Memo extends BaseModel {
     }
 
     // Check all three params and their respective conditions
-    public function validateParams() { // TODO: Check input length
+    public function validateParams() {
         $errors = array();
 
         $v1 = new Valitron\Validator(array('title' => $this->title));

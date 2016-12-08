@@ -45,4 +45,25 @@ class User extends BaseModel {
         return null;
     }
 
+    public function save() {
+
+        // TODO: implementation
+    }
+
+    public function update() {
+
+        // TODO: implementation
+    }
+
+    public function delete() {
+
+        // TODO: implementation
+    }
+
+    // Check both params and their respective conditions
+    public function validateParams() {
+
+        // TODO: implementation
+    }
+
 }

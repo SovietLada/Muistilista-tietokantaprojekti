@@ -68,9 +68,14 @@ $routes->get('/edit_user/:id', 'check_logged_in', function($id) { // edit user
     UserController::edit($id);
 });
 
-$routes->get('/new_user', function() { // new user
+$routes->get('/new_user', function() { // new user page
 
-    UserController::create();
+    UserController::store();
+});
+
+$routes->post('/new_user', function() { // add new user
+
+    MemoController::store();
 });
 
 $routes->get('/show_user/:id', 'check_logged_in', function($id) { // show user
