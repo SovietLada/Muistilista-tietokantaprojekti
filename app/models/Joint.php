@@ -9,11 +9,6 @@ class Joint extends BaseModel {
         parent::__construct($attributes);
     }
 
-    public function all() {
-
-        // TODO: implementation
-    }
-
     public function find($id) {
 
         $query = DB::connection()->prepare('SELECT * FROM Joint WHERE id = :id LIMIT 1');

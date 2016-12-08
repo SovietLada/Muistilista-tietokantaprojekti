@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <div class="page-header">
     <h1>Kategoriat</h1>
 </div>
@@ -11,12 +12,12 @@
             <th>Nimi</th>
         </tr>
     </thead>
-    
+
     <tbody>
         {% for category in categories %}
         <tr>
             <td>{{category.title}}</td>
-            <td><a class="btn btn-default" href="{{base_path}}/view_categories/{{category.id}}">Tarkastele</a></td> <!-- TODO: fix view -->
+            <td><a class="btn btn-default" href="{{base_path}}/view_categories/{{category.id}}">Tarkastele</a></td>
         </tr>
         {% endfor %}
     </tbody>

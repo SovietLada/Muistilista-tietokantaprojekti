@@ -45,7 +45,7 @@ class UserController extends BaseController {
     
     public static function store() {
         
-        
+        // TODO: implementation
     }
 
 

@@ -1,5 +1,10 @@
 {% extends "base.html" %}
+
 {% block content %}
+
+<div class="page-header">
+    <h1>Muistio: {{attributes.title}}</h1>
+</div>
 
 {% if success %}
 <div class="alert alert-success">
@@ -7,9 +12,6 @@
 </div>
 {% endif %}
 
-<div class="page-header">
-    <h1>Muistio: {{attributes.title}}</h1>
-</div>
 <h2>{{attributes.content}}</h2>
 
 <p>Prioriteetti: {{attributes.priority}}</p>
