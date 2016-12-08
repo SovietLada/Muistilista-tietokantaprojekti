@@ -62,3 +62,18 @@ $routes->get('/view_categories/:id', 'check_logged_in', function($id) { // show 
 
     CategoryController::show($id);
 });
+
+$routes->get('/edit_user/:id', 'check_logged_in', function($id) { // edit user
+
+    UserController::edit($id);
+});
+
+$routes->get('/new_user', 'check_logged_in', function() { // new user
+
+    UserController::create();
+});
+
+$routes->get('/show_user/:id', 'check_logged_in', function($id) { // show user
+
+    UserController::show($id);
+});

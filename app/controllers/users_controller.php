@@ -33,4 +33,19 @@ class UserController extends BaseController {
         return null; // login failed
     }
 
+    public static function edit($id) {
+
+        View::make('user_edit.html');
+    }
+
+    public static function create() {
+
+        View::make('user_new.html');
+    }
+    
+    public static function show($id) {
+        
+        View::make('user_show.html');
+    }
+
 }
