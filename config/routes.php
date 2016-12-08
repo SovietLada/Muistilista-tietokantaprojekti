@@ -59,7 +59,7 @@ $routes->get('/new_user', function() { // new user page
     UserController::store();
 });
 
-$routes->post('/new_user', function() { // add new user
+$routes->post('TODO ROUTE', function() { // add new user
     MemoController::store();
 });
 

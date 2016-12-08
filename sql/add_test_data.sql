@@ -36,7 +36,7 @@ INSERT INTO Joint (memo_id, category_id) VALUES (1, 1);
 INSERT INTO Memo (title, content, priority, user_id) VALUES (
     'Toteuta roolipeli', 
     'Tehdään javalla tekstipohjainen roolipeli jota voi pelata tylsinä sadepäivinä', 
-    99, 
+    20, 
     1
 );
 INSERT INTO Joint (memo_id, category_id) VALUES (2, 1);
@@ -62,7 +62,7 @@ INSERT INTO Joint (memo_id, category_id) VALUES (4, 2);
 INSERT INTO Memo (title, content, priority, user_id) VALUES (
     'Vaihda Ferrarin etulasi', 
     'Lisätietoja: ei ole', 
-    199, 
+    40, 
     1
 );
 INSERT INTO Joint (memo_id, category_id) VALUES (5, 2);
@@ -72,7 +72,7 @@ INSERT INTO Joint (memo_id, category_id) VALUES (5, 2);
 INSERT INTO Memo (title, content, priority, user_id) VALUES (
     'Rapsuta kissaa', 
     'Kissa tykkää rapsuttamisesta, rapsuta sitä jossain vaiheessa', 
-    2, 
+    900, 
     1
 );
 INSERT INTO Joint (memo_id, category_id) VALUES (6, 6);
@@ -83,7 +83,7 @@ INSERT INTO Joint (memo_id, category_id) VALUES (6, 8);
 INSERT INTO Memo (title, content, priority, user_id) VALUES (
     'Maalaa piha-aita punaiseksi', 
     'Muista ostaa punaista maalia rautakaupasta ennen maalaamista', 
-    2, 
+    1, 
     1
 );
 INSERT INTO Joint (memo_id, category_id) VALUES (7, 3);
@@ -97,7 +97,7 @@ INSERT INTO Joint (memo_id, category_id) VALUES (7, 5);
 INSERT INTO Memo (title, content, priority, user_id) VALUES (
     'Syö omppuja', 
     'Mielellään punaisia', 
-    3, 
+    10, 
     2
 );
 INSERT INTO Joint (memo_id, category_id) VALUES (8, 2);
@@ -105,7 +105,7 @@ INSERT INTO Joint (memo_id, category_id) VALUES (8, 2);
 INSERT INTO Memo (title, content, priority, user_id) VALUES (
     'Harrasta ruutuhyppelyä', 
     'Tee se', 
-    4, 
+    0, 
     2
 );
 INSERT INTO Joint (memo_id, category_id) VALUES (9, 2);
@@ -115,7 +115,7 @@ INSERT INTO Joint (memo_id, category_id) VALUES (9, 2);
 INSERT INTO Memo (title, content, priority, user_id) VALUES (
     'Paranna muistilistan tietoturvaa', 
     'Kirjautumattomien käyttäjien ei tulisi päästä tarkastelemaan sovelluksen tietoja', 
-    100, 
+    12, 
     2
 );
 INSERT INTO Joint (memo_id, category_id) VALUES (10, 2);

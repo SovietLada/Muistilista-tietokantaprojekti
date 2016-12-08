@@ -140,6 +140,14 @@ class Memo extends BaseModel {
             $this->priority = 0;
         }
 
+        $v6 = new Valitron\Validator(array('priority' => $this->priority));
+        $v6->rule('max', 'priority', 999);
+        $v6->rule('min', 'priority', 0);
+        if (!$v6->validate()) {
+            $errors[] = 'Prioriteetin tulee olla numero väliltä 0-999';
+            $this->priority = 0;
+        }
+
         return $errors;
     }
 
