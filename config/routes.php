@@ -68,7 +68,7 @@ $routes->get('/edit_user/:id', 'check_logged_in', function($id) { // edit user
     UserController::edit($id);
 });
 
-$routes->get('/new_user', 'check_logged_in', function() { // new user
+$routes->get('/new_user', function() { // new user
 
     UserController::create();
 });
