@@ -117,21 +117,21 @@ class Memo extends BaseModel {
             $errors[] = 'Määrittele sisältö';
             $this->content = 'Sisältö';
         }
-        
+
         $v4 = new Valitron\Validator(array('title' => $this->title));
         $v4->rule('lengthMax', 'title', 64);
         if (!$v4->validate()) {
             $errors[] = 'Otsikko on liian pitkä';
             $this->title = 'Otsikko';
         }
-        
+
         $v5 = new Valitron\Validator(array('content' => $this->content));
         $v5->rule('lengthMax', 'content', 128);
         if (!$v5->validate()) {
             $errors[] = 'Sisältö-kenttä on liian pitkä';
             $this->content = 'Sisältö';
         }
-        
+
         $v3 = new Valitron\Validator(array('priority' => $this->priority));
         $v3->rule('numeric', 'priority');
         $v3->rule('required', 'priority');
@@ -141,6 +141,13 @@ class Memo extends BaseModel {
         }
 
         return $errors;
+    }
+
+    function cmp($a, $b) {
+        if ($a->priority == $b->priority) {
+            return 0;
+        }
+        return ($a->priority > $b->priority) ? -1 : 1;
     }
 
 }
