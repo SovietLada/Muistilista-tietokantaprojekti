@@ -2,6 +2,19 @@
 
 {% block content %}
 
-<h1>Tarkastele käyttäjää</h1>
+<div class="page-header">
+    <h1>Käyttäjä {{attributes.username}}</h1>
+</div>
+
+{% if success %}
+<div class="alert alert-success">
+    {{success}}
+</div>
+{% endif %}
+
+<a class="btn btn-default" href="{{base_path}}/">Poistu tarkastelunäkymästä</a>
+
+<a class="btn btn-default btn-sm" href="{{base_path}}/edit_user">Muokkaa tietojasi</a>
+<a class="btn btn-danger btn-sm" href="{{base_path}}/delete">Poista käyttäjä</a>
 
 {% endblock %}

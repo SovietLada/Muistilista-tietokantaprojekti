@@ -47,17 +47,26 @@ class User extends BaseModel {
 
     public function save() {
 
-        // TODO: implementation
+        $query = DB::connection()->prepare('INSERT INTO UserAccount (username, password) VALUES (:username, :password) RETURNING id');
+        $query->execute(array('username' => $this->username, 'password' => $this->password));
+        $row = $query->fetch();
+
+        return $row;
     }
 
     public function update() {
 
-        // TODO: implementation
+        $query = DB::connection()->prepare('UPDATE UserAccount SET username = :username, password = :password WHERE id = :id');
+        $query->execute(array('username' => $this->username, 'password' => $this->password, 'id' => $this->id));
+        $row = $query->fetch();
     }
 
     public function delete() {
 
-        // TODO: implementation
+        $query = DB::connection()->prepare('DELETE FROM UserAccount WHERE id = :id');
+        $query->execute(array('id' => $this->id));
+        $row = $query->fetch();
+
     }
 
     // Check both params and their respective conditions

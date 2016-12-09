@@ -51,18 +51,26 @@ $routes->get('/view_categories/:id', 'check_logged_in', function($id) { // show 
     CategoryController::show($id);
 });
 
-$routes->get('/edit_user/:id', 'check_logged_in', function($id) { // edit user
-    UserController::edit($id);
+$routes->get('/edit_user', 'check_logged_in', function() { // edit user
+    UserController::edit();
+});
+
+$routes->post('/edit_user', 'check_logged_in', function() { // update existing user
+    UserController::update();
 });
 
 $routes->get('/new_user', function() { // new user page
+    UserController::create();
+});
+
+$routes->post('/new_user', function() { // add new user
     UserController::store();
 });
 
-$routes->post('TODO ROUTE', function() { // add new user
-    MemoController::store();
+$routes->get('/show_user', 'check_logged_in', function() { // show user
+    UserController::show();
 });
 
-$routes->get('/show_user/:id', 'check_logged_in', function($id) { // show user
-    UserController::show($id);
+$routes->get('/delete', 'check_logged_in', function() { // delete user
+    UserController::delete();
 });

@@ -90,6 +90,17 @@ INSERT INTO Joint (memo_id, category_id) VALUES (7, 3);
 INSERT INTO Joint (memo_id, category_id) VALUES (7, 4);
 INSERT INTO Joint (memo_id, category_id) VALUES (7, 5);
 
+/* Set memos and joints to categories 4 and 5 */
+
+INSERT INTO Memo (title, content, priority, user_id) VALUES (
+    'Tsoha demotilaisuus', 
+    'Esittele sovelluksen toimintaa: crud, validointi, toiminnallisuudet, yms.', 
+    999, 
+    1
+);
+INSERT INTO Joint (memo_id, category_id) VALUES (8, 4);
+INSERT INTO Joint (memo_id, category_id) VALUES (8, 5);
+
 
 /* Turing's files */
 /* Set memos and joints to category 2 */
@@ -100,7 +111,7 @@ INSERT INTO Memo (title, content, priority, user_id) VALUES (
     10, 
     2
 );
-INSERT INTO Joint (memo_id, category_id) VALUES (8, 2);
+INSERT INTO Joint (memo_id, category_id) VALUES (9, 2);
 
 INSERT INTO Memo (title, content, priority, user_id) VALUES (
     'Harrasta ruutuhyppelyä', 
@@ -108,7 +119,7 @@ INSERT INTO Memo (title, content, priority, user_id) VALUES (
     0, 
     2
 );
-INSERT INTO Joint (memo_id, category_id) VALUES (9, 2);
+INSERT INTO Joint (memo_id, category_id) VALUES (10, 2);
 
 /* Set memos and joints to category 2 and 7 */
 
@@ -118,5 +129,15 @@ INSERT INTO Memo (title, content, priority, user_id) VALUES (
     12, 
     2
 );
-INSERT INTO Joint (memo_id, category_id) VALUES (10, 2);
-INSERT INTO Joint (memo_id, category_id) VALUES (10, 7);
+INSERT INTO Joint (memo_id, category_id) VALUES (11, 2);
+INSERT INTO Joint (memo_id, category_id) VALUES (11, 7);
+
+/* Set memos and joints to category 8 */
+
+INSERT INTO Memo (title, content, priority, user_id) VALUES (
+    'Sovellus on valmis', 
+    'TODO: -', 
+    1, 
+    2
+);
+INSERT INTO Joint (memo_id, category_id) VALUES (12, 8);

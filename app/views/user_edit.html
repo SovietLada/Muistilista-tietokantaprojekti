@@ -2,6 +2,45 @@
 
 {% block content %}
 
-<h1>Muokkaa käyttäjää</h1>
+<h1>Muokkaa tietojasi</h1>
+
+{% if error %}
+<div class="alert alert-danger">
+    {{error}}
+</div>
+{% endif %}
+
+{% if errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for error in errors %}
+        <li>{{error}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+<form method="post" action="{{base_path}}/edit_user"> <!-- Remember to put attributes inside quotes, e.g. "{{attributes.id}}" -->
+
+    <div class="form-group">
+        <input class="form-control" name="id" value="{{attributes.id}}" type="hidden">
+    </div>
+    <div class="form-group">
+        <label>Käyttäjätunnus</label>
+        <input class="form-control" name="username" value="{{attributes.username}}" type="text">
+    </div>
+    <div class="form-group">
+        <label>Salasana</label>
+        <input class="form-control" name="password1" value="" type="password">
+    </div>
+    <div class="form-group">
+        <label>Salasana uudelleen</label>
+        <input class="form-control" name="password2" value="" type="password">
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Tallenna muutokset</button>
+    </div>
+</form>
 
 {% endblock %}
