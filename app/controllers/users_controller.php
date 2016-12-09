@@ -91,6 +91,7 @@ class UserController extends BaseController {
     public static function delete() {
 
         $user = parent::get_user_logged_in();
+        Memo::deleteMemosWithUser($user->id);
         $user->delete();
         Redirect::to('/login', array('message' => 'Käyttäjätilisi on poistettu'));
     }

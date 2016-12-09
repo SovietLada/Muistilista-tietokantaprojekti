@@ -102,7 +102,7 @@ class Memo extends BaseModel {
 
     // Check all three params and their respective conditions
     public function validateParams() {
-        
+
         $errors = array();
 
         $v1 = new Valitron\Validator(array('title' => $this->title));
@@ -157,6 +157,26 @@ class Memo extends BaseModel {
             return 0;
         }
         return ($a->priority > $b->priority) ? -1 : 1;
+    }
+
+    public static function deleteMemosWithUser($uid) {
+
+        $query = DB::connection()->prepare('SELECT * FROM Memo WHERE user_id = :uid');
+        $query->execute(array('uid' => $uid));
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($result as $row) {
+
+            $memo = new Memo(array(
+                'id' => $row['id'],
+                'title' => $row['title'],
+                'content' => $row['content'],
+                'priority' => $row['priority'],
+                'user_id' => $row['user_id']
+            ));
+            Joint::deleteJointsWithMemo($memo->id);
+            $memo->delete();
+        }
     }
 
 }

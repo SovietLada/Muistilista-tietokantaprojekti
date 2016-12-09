@@ -2,8 +2,8 @@
 
 CREATE TABLE UserAccount (
     id SERIAL PRIMARY KEY,
-    username varchar(32) NOT NULL,
-    password varchar(32) NOT NULL
+    username varchar(18) NOT NULL,
+    password varchar(18) NOT NULL
 );
 
 CREATE TABLE Memo (

@@ -79,6 +79,13 @@ class User extends BaseModel {
             $errors[] = 'Määrittele käyttäjänimi';
         }
 
+        $v5 = new Valitron\Validator(array('username' => $this->username));
+        $v5->rule('lengthMin', 'username', 4);
+        $v5->rule('lengthMax', 'username', 18);
+        if (!$v5->validate()) {
+            $errors[] = 'Käyttäjänimen tulee olla 4-18 merkkiä';
+        }
+
         $v2 = new Valitron\Validator(array('password' => $this->password));
         $v2->rule('required', 'password');
         if (!$v2->validate()) {
@@ -86,9 +93,10 @@ class User extends BaseModel {
         }
 
         $v3 = new Valitron\Validator(array('password' => $this->password));
-        $v3->rule('min', 'password', 4);
+        $v3->rule('lengthMin', 'password', 4);
+        $v3->rule('lengthMax', 'password', 18);
         if (!$v3->validate()) {
-            $errors[] = 'Salasanan tulee olla väh. 4 merkkiä';
+            $errors[] = 'Salasanan tulee olla 4-18 merkkiä';
         }
 
         return $errors;
