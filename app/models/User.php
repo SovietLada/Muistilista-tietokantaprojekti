@@ -66,13 +66,32 @@ class User extends BaseModel {
         $query = DB::connection()->prepare('DELETE FROM UserAccount WHERE id = :id');
         $query->execute(array('id' => $this->id));
         $row = $query->fetch();
-
     }
 
     // Check both params and their respective conditions
     public function validateParams() {
 
-        // TODO: implementation
+        $errors = array();
+
+        $v1 = new Valitron\Validator(array('username' => $this->username));
+        $v1->rule('required', 'username');
+        if (!$v1->validate()) {
+            $errors[] = 'Määrittele käyttäjänimi';
+        }
+
+        $v2 = new Valitron\Validator(array('password' => $this->password));
+        $v2->rule('required', 'password');
+        if (!$v2->validate()) {
+            $errors[] = 'Määrittele salasana';
+        }
+
+        $v3 = new Valitron\Validator(array('password' => $this->password));
+        $v3->rule('min', 'password', 4);
+        if (!$v3->validate()) {
+            $errors[] = 'Salasanan tulee olla väh. 4 merkkiä';
+        }
+
+        return $errors;
     }
 
 }

@@ -10,6 +10,16 @@
 </div>
 {% endif %}
 
+{% if errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for error in errors %}
+        <li>{{error}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
 <form method="post" action="{{base_path}}/new_user">
     <div class="form-group">
         <label>Käyttäjätunnus</label>
