@@ -139,6 +139,11 @@ class MemoController extends BaseController {
     public static function edit($id) {
 
         $memo = Memo::find($id);
+
+        if ($memo->user_id != parent::get_user_logged_in()->id) {
+            Redirect::to('/', array('error' => 'Sinulla ei ole oikeuksia muistion muokkaamiseen'));
+        }
+
         $categories = Category::all();
         View::make('memo_edit.html', array('attributes' => $memo, 'categories' => $categories));
     }
@@ -165,8 +170,13 @@ class MemoController extends BaseController {
 
     public static function delete($id) {
 
-        Joint::deleteJointsWithMemo($id);
         $memo = Memo::find($id);
+
+        if ($memo->user_id != parent::get_user_logged_in()->id) {
+            Redirect::to('/', array('error' => 'Sinulla ei ole oikeuksia muistion poistamiseen'));
+        }
+
+        Joint::deleteJointsWithMemo($id);
         $memo->delete();
         Redirect::to('/', array('success' => 'Poisto onnistui'));
     }
@@ -174,6 +184,11 @@ class MemoController extends BaseController {
     public static function show($id) {
 
         $memo = Memo::find($id);
+
+        if ($memo->user_id != parent::get_user_logged_in()->id) {
+            Redirect::to('/', array('error' => 'Sinulla ei ole oikeuksia muistion katseluun'));
+        }
+
         View::make('memo_show.html', array('attributes' => $memo));
     }
 
