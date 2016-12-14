@@ -9,12 +9,6 @@ class MemoController extends BaseController {
         View::make('home.html', array('memos' => $memos)); // render view
     }
 
-    public static function categories() {
-
-        $categories = Category::all(); // get categories
-        View::make('categories.html', array('categories' => $categories));
-    }
-
     public static function create() {
 
         $categories = Category::all();

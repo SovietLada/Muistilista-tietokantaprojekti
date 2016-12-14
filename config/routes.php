@@ -9,7 +9,11 @@ $routes->get('/', 'check_logged_in', function() { // home page
 });
 
 $routes->get('/categories', 'check_logged_in', function() { // categories page
-    MemoController::categories();
+    CategoryController::categories();
+});
+
+$routes->get('/view_categories/:id', 'check_logged_in', function($id) { // show category page
+    CategoryController::show($id);
 });
 
 $routes->post('/', 'check_logged_in', function() { // add new memo
@@ -37,18 +41,14 @@ $routes->get('/show/:id', 'check_logged_in', function($id) { // show memo page
 });
 
 $routes->get('/login', function() { // login page
-    UserController::login();
+    BaseController::login();
 });
 $routes->post('/login', function() { // log user in
-    UserController::handle_login();
+    BaseController::handle_login();
 });
 
 $routes->post('/logout', function() { // log user out
-    UserController::logout();
-});
-
-$routes->get('/view_categories/:id', 'check_logged_in', function($id) { // show category page
-    CategoryController::show($id);
+    BaseController::logout();
 });
 
 $routes->get('/edit_user', 'check_logged_in', function() { // edit user
